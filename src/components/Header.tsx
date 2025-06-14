@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Menu, ChevronLeft, ChevronRight, Bell, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -9,7 +8,7 @@ interface HeaderProps {
 
 const Header = ({ onToggleSidebar }: HeaderProps) => {
   return (
-    <header className="bg-white border-b border-gray-200 px-6 py-4">
+    <header className="border-b border-gray-200 px-6 py-4" style={{ backgroundColor: '#e4e4e4' }}>
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <Button 
