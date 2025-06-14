@@ -63,8 +63,8 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
   };
 
   return (
-    <div className={`h-full transition-all duration-300 ${isCollapsed ? 'w-16' : 'w-64'} relative`} style={{ backgroundColor: '#e4e4e4' }}>
-      <div className="p-4">
+    <div className={`h-full transition-all duration-300 ${isCollapsed ? 'w-16' : 'w-64'} relative flex flex-col`} style={{ backgroundColor: '#e4e4e4' }}>
+      <div className="p-4 flex-shrink-0">
         <div className="flex items-center space-x-3">
           <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center">
             <img 
@@ -82,89 +82,93 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
         </div>
       </div>
 
-      <nav className="mt-8">
-        {menuItems.map((item, index) => (
-          <div key={index} className="relative">
-            {item.hasSubmenu ? (
-              <div>
-                <button
-                  onClick={handleVoiceAgentClick}
-                  className={`w-full flex items-center px-4 py-3 text-sm font-medium transition-colors relative ${
-                    location.pathname.startsWith('/voice-agent')
+      <nav className="mt-8 flex-1 overflow-y-auto">
+        <div className="space-y-1 px-2">
+          {menuItems.map((item, index) => (
+            <div key={index}>
+              {item.hasSubmenu ? (
+                <div>
+                  <button
+                    onClick={handleVoiceAgentClick}
+                    className={`w-full flex items-center px-2 py-2.5 text-sm font-medium transition-colors rounded-lg ${
+                      location.pathname.startsWith('/voice-agent')
+                        ? 'bg-blue-50 text-blue-700'
+                        : 'text-gray-700 hover:bg-gray-50'
+                    }`}
+                  >
+                    <item.icon className="w-5 h-5 flex-shrink-0" />
+                    {!isCollapsed && (
+                      <>
+                        <span className="ml-3 flex-1 text-left">{item.label}</span>
+                        <span className="ml-auto flex-shrink-0">
+                          {voiceAgentExpanded ? (
+                            <ChevronDown className="w-4 h-4" />
+                          ) : (
+                            <ChevronRight className="w-4 h-4" />
+                          )}
+                        </span>
+                      </>
+                    )}
+                  </button>
+                  {!isCollapsed && voiceAgentExpanded && item.submenu && (
+                    <div className="ml-6 mt-1 space-y-1">
+                      {item.submenu.map((subItem, subIndex) => (
+                        <Link
+                          key={subIndex}
+                          to={subItem.path}
+                          className={`flex items-center px-2 py-2 text-sm transition-colors rounded-lg ${
+                            location.pathname === subItem.path
+                              ? 'bg-blue-50 text-blue-700'
+                              : 'text-gray-600 hover:bg-gray-50'
+                          }`}
+                        >
+                          <subItem.icon className="w-4 h-4 flex-shrink-0" />
+                          <span className="ml-3">{subItem.label}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <Link
+                  to={item.path}
+                  className={`flex items-center px-2 py-2.5 text-sm font-medium transition-colors rounded-lg ${
+                    location.pathname === item.path
                       ? 'bg-blue-50 text-blue-700'
                       : 'text-gray-700 hover:bg-gray-50'
                   }`}
                 >
-                  <item.icon className="w-5 h-5" />
+                  <item.icon className="w-5 h-5 flex-shrink-0" />
                   {!isCollapsed && (
                     <>
-                      <span className="ml-3">{item.label}</span>
-                      <span className="ml-auto">
-                        {voiceAgentExpanded ? (
-                          <ChevronDown className="w-4 h-4" />
-                        ) : (
-                          <ChevronRight className="w-4 h-4" />
-                        )}
-                      </span>
+                      <span className="ml-3 flex-1">{item.label}</span>
+                      {item.badge && (
+                        <span className="ml-auto bg-blue-600 text-white text-xs rounded-full px-2 py-1 flex-shrink-0">
+                          {item.badge}
+                        </span>
+                      )}
                     </>
                   )}
-                </button>
-                {!isCollapsed && voiceAgentExpanded && item.submenu && (
-                  <div className="ml-8">
-                    {item.submenu.map((subItem, subIndex) => (
-                      <Link
-                        key={subIndex}
-                        to={subItem.path}
-                        className={`flex items-center px-4 py-2 text-sm transition-colors relative ${
-                          location.pathname === subItem.path
-                            ? 'bg-blue-50 text-blue-700'
-                            : 'text-gray-600 hover:bg-gray-50'
-                        }`}
-                      >
-                        <subItem.icon className="w-4 h-4" />
-                        <span className="ml-3">{subItem.label}</span>
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ) : (
-              <Link
-                to={item.path}
-                className={`flex items-center px-4 py-3 text-sm font-medium transition-colors relative ${
-                  location.pathname === item.path
-                    ? 'bg-blue-50 text-blue-700'
-                    : 'text-gray-700 hover:bg-gray-50'
-                }`}
-              >
-                <item.icon className="w-5 h-5" />
-                {!isCollapsed && (
-                  <>
-                    <span className="ml-3">{item.label}</span>
-                    {item.badge && (
-                      <span className="ml-auto bg-blue-600 text-white text-xs rounded-full px-2 py-1">
-                        {item.badge}
-                      </span>
-                    )}
-                  </>
-                )}
-              </Link>
-            )}
-          </div>
-        ))}
+                </Link>
+              )}
+            </div>
+          ))}
+        </div>
       </nav>
 
-      <div className="absolute bottom-0 left-0 right-0 p-4">
-        {bottomItems.map((item, index) => (
-          <Link
-            key={index}
-            to={item.path}
-            className="flex items-center px-2 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg transition-colors relative"
-          >
-            <item.icon className="w-5 h-5" />
-            {!isCollapsed && <span className="ml-3">{item.label}</span>}
-          </Link>
-        ))}
+      <div className="flex-shrink-0 p-2 border-t border-gray-300 mt-auto">
+        <div className="space-y-1">
+          {bottomItems.map((item, index) => (
+            <Link
+              key={index}
+              to={item.path}
+              className="flex items-center px-2 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
+            >
+              <item.icon className="w-5 h-5 flex-shrink-0" />
+              {!isCollapsed && <span className="ml-3">{item.label}</span>}
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
