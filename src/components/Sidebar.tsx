@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { 
   BarChart3, 
@@ -6,8 +7,8 @@ import {
   MessageSquare, 
   Users, 
   CreditCard, 
-  Pill, 
-  Stethoscope, 
+  Mail, 
+  Briefcase, 
   Settings, 
   HelpCircle, 
   LogOut 
@@ -24,8 +25,8 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
     { icon: MessageSquare, label: 'Messages', badge: '3' },
     { icon: Calendar, label: 'Appointments' },
     { icon: CreditCard, label: 'Billing & Payments' },
-    { icon: Pill, label: 'Medications Management' },
-    { icon: Stethoscope, label: 'Medical Staff' },
+    { icon: Mail, label: 'Email Campaign' },
+    { icon: Briefcase, label: 'Workspace' },
     { icon: Users, label: 'Reports & Analytics' },
   ];
 
@@ -39,12 +40,16 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
     <div className={`h-full transition-all duration-300 ${isCollapsed ? 'w-16' : 'w-64'}`} style={{ backgroundColor: '#e4e4e4' }}>
       <div className="p-4">
         <div className="flex items-center space-x-3">
-          <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-            <Stethoscope className="w-5 h-5 text-white" />
+          <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center">
+            <img 
+              src="/lovable-uploads/4abff3f1-299b-44c4-bda7-84b5880d51a3.png" 
+              alt="Elvora Logo" 
+              className="w-6 h-6 object-contain filter invert"
+            />
           </div>
           {!isCollapsed && (
             <div>
-              <h1 className="font-bold text-lg text-gray-900">MediTrack</h1>
+              <h1 className="font-bold text-lg text-gray-900">Elvora</h1>
               <p className="text-xs text-gray-500">Free Plan</p>
             </div>
           )}
