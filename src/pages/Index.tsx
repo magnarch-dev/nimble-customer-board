@@ -18,7 +18,7 @@ const Index = () => {
     <div className="min-h-screen flex" style={{ backgroundColor: '#e4e4e4' }}>
       <Sidebar isCollapsed={sidebarCollapsed} />
       
-      <div className="flex-1 flex flex-col">
+      <div className={`flex-1 flex flex-col transition-all duration-300 ${sidebarCollapsed ? 'ml-16' : 'ml-64'}`}>
         <Header onToggleSidebar={toggleSidebar} />
         
         <main className="flex-1 p-6 overflow-y-auto">
