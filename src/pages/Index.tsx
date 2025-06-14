@@ -45,14 +45,14 @@ const Index = () => {
             <SalesChart />
           </div>
           
-          {/* Total Meetings Heatmap - Full Width */}
-          <div className="mb-4">
-            <CalendarHeatmap />
-          </div>
-
-          {/* Meeting Calendar - Full Width */}
-          <div className="mb-4">
-            <MeetingCalendar />
+          {/* Meeting Calendar with Total Meetings sidebar */}
+          <div className="mb-4 flex gap-4">
+            <div className="flex-1">
+              <MeetingCalendar />
+            </div>
+            <div className="w-80">
+              <CalendarHeatmap />
+            </div>
           </div>
         </main>
       </div>
