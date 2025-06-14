@@ -63,7 +63,7 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
   };
 
   return (
-    <div className={`h-full transition-all duration-300 ${isCollapsed ? 'w-16' : 'w-64'} relative flex flex-col`} style={{ backgroundColor: '#e4e4e4' }}>
+    <div className={`h-screen transition-all duration-300 ${isCollapsed ? 'w-16' : 'w-64'} relative flex flex-col fixed left-0 top-0 z-10`} style={{ backgroundColor: '#e4e4e4' }}>
       <div className="p-4 flex-shrink-0">
         <div className="flex items-center space-x-3">
           <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center">
