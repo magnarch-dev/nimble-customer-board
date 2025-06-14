@@ -11,10 +11,10 @@ const PatientBreakdown = () => {
   const total = patientData.reduce((sum, item) => sum + item.count, 0);
 
   return (
-    <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-      <h3 className="text-lg font-semibold text-gray-900 mb-6">Patient Breakdown</h3>
+    <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+      <h3 className="text-lg font-semibold text-gray-900 mb-4">Patient Breakdown</h3>
       
-      <div className="space-y-4">
+      <div className="space-y-3">
         {patientData.map((item, index) => {
           const percentage = (item.count / total) * 100;
           
@@ -31,9 +31,9 @@ const PatientBreakdown = () => {
                 <span className="text-lg font-bold text-gray-900">{item.count.toLocaleString()}</span>
               </div>
               
-              <div className="w-full bg-gray-100 rounded-full h-2">
+              <div className="w-full bg-gray-100 rounded-full h-1.5">
                 <div 
-                  className="h-2 rounded-full transition-all duration-500"
+                  className="h-1.5 rounded-full transition-all duration-500"
                   style={{ 
                     backgroundColor: item.color,
                     width: `${percentage}%`

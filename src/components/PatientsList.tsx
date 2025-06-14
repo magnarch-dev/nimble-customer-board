@@ -57,8 +57,8 @@ const PatientsList = () => {
   };
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200">
-      <div className="p-6 border-b border-gray-200">
+    <div className="bg-white rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+      <div className="p-5 border-b border-gray-200">
         <h3 className="text-lg font-semibold text-gray-900 mb-4">Inpatient Patients List</h3>
         
         <div className="flex items-center justify-between">
@@ -89,28 +89,28 @@ const PatientsList = () => {
         <table className="w-full">
           <thead className="bg-gray-50">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Patient
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Admission Date
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Diagnosis
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Room Number
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Assigned Doctor
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Insurance
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Location
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Actions
               </th>
             </tr>
@@ -118,7 +118,7 @@ const PatientsList = () => {
           <tbody className="bg-white divide-y divide-gray-200">
             {patients.map((patient) => (
               <tr key={patient.id} className="hover:bg-gray-50">
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="px-5 py-4 whitespace-nowrap">
                   <div className="flex items-center">
                     <div className="flex-shrink-0 h-10 w-10">
                       <div className="h-10 w-10 rounded-full bg-blue-500 flex items-center justify-center">
@@ -133,16 +133,16 @@ const PatientsList = () => {
                     </div>
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                <td className="px-5 py-4 whitespace-nowrap text-sm text-gray-900">
                   {patient.admissionDate}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                <td className="px-5 py-4 whitespace-nowrap text-sm text-gray-900">
                   {patient.diagnosis}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                <td className="px-5 py-4 whitespace-nowrap text-sm text-gray-900">
                   {patient.room}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="px-5 py-4 whitespace-nowrap">
                   <div className="flex items-center">
                     <div className="flex-shrink-0 h-8 w-8">
                       <div className="h-8 w-8 rounded-full bg-gray-300 flex items-center justify-center">
@@ -157,16 +157,16 @@ const PatientsList = () => {
                     </div>
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="px-5 py-4 whitespace-nowrap">
                   <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(patient.status)}`}>
                     <div className="w-2 h-2 rounded-full bg-current mr-1 mt-0.5"></div>
                     {patient.insurance}
                   </span>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                <td className="px-5 py-4 whitespace-nowrap text-sm text-gray-900">
                   Main
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                <td className="px-5 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <Button variant="ghost" size="sm">
                     <MoreVertical className="w-4 h-4" />
                   </Button>

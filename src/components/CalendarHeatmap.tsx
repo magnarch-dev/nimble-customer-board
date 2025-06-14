@@ -35,13 +35,13 @@ const CalendarHeatmap = () => {
   };
 
   return (
-    <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-      <div className="flex justify-between items-center mb-6">
+    <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+      <div className="flex justify-between items-center mb-4">
         <div>
           <h3 className="text-lg font-semibold text-gray-900">Total Appointment</h3>
           <div className="flex items-center space-x-2 mt-1">
             <span className="text-2xl font-bold text-gray-900">1,245</span>
-            <div className="flex items-center text-green-600 text-sm">
+            <div className="flex items-center text-green-600 text-sm font-medium">
               <span>+2.6%</span>
             </div>
           </div>

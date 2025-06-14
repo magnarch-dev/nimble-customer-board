@@ -20,8 +20,8 @@ const SalesChart = () => {
   ];
 
   return (
-    <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-      <div className="flex justify-between items-center mb-6">
+    <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+      <div className="flex justify-between items-center mb-4">
         <h3 className="text-lg font-semibold text-gray-900">Sales Overview</h3>
         <select className="text-sm border border-gray-300 rounded px-3 py-1">
           <option>This Week</option>
@@ -30,14 +30,14 @@ const SalesChart = () => {
         </select>
       </div>
       
-      <div className="mb-6">
+      <div className="mb-4">
         <div className="text-2xl font-bold text-gray-900 mb-1">$250,000</div>
         <div className="text-sm text-gray-600">
           Increased by <span className="text-green-600 font-medium">$30,000</span> compared to last week
         </div>
       </div>
 
-      <div className="h-64 mb-6">
+      <div className="h-48 mb-4">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data}>
             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
@@ -48,13 +48,13 @@ const SalesChart = () => {
         </ResponsiveContainer>
       </div>
 
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-3 gap-3">
         {salesData.map((item, index) => (
           <div key={index} className="text-center">
             <div className="text-lg font-bold text-gray-900">{item.value}</div>
-            <div className="text-sm text-gray-600 flex items-center justify-center">
+            <div className="text-xs text-gray-600 flex items-center justify-center">
               <div 
-                className="w-3 h-3 rounded-full mr-2"
+                className="w-2 h-2 rounded-full mr-2"
                 style={{ backgroundColor: item.color }}
               ></div>
               {item.label}

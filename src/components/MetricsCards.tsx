@@ -35,23 +35,23 @@ const MetricsCards = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
       {metrics.map((metric, index) => (
-        <div key={index} className="bg-white p-6 rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-          <div className="flex justify-between items-start mb-4">
+        <div key={index} className="bg-white p-4 rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div className="flex justify-between items-center mb-3">
             <h3 className="text-sm font-medium text-gray-600">{metric.title}</h3>
-            <div className={`flex items-center text-sm ${
+            <div className={`flex items-center text-sm font-medium ${
               metric.changeType === 'increase' ? 'text-green-600' : 'text-red-600'
             }`}>
               {metric.changeType === 'increase' ? 
-                <TrendingUp className="w-4 h-4 mr-1" /> : 
-                <TrendingDown className="w-4 h-4 mr-1" />
+                <TrendingUp className="w-3 h-3 mr-1" /> : 
+                <TrendingDown className="w-3 h-3 mr-1" />
               }
               {metric.change}
             </div>
           </div>
-          <div className="text-3xl font-bold text-gray-900 mb-2">{metric.value}</div>
-          <p className="text-xs text-gray-500">{metric.subtitle}</p>
+          <div className="text-2xl font-bold text-gray-900 mb-1">{metric.value}</div>
+          <p className="text-xs text-gray-500 leading-tight">{metric.subtitle}</p>
         </div>
       ))}
     </div>
