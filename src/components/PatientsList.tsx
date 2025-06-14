@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Search, Filter, MoreVertical } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -56,7 +57,7 @@ const PatientsList = () => {
   };
 
   return (
-    <div className="rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1" style={{ backgroundColor: 'rgba(255, 255, 255, 0.4)' }}>
+    <div className="rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1" style={{ backgroundColor: 'rgba(255, 255, 255, 0.6)' }}>
       <div className="p-5 border-b border-gray-200">
         <h3 className="text-lg font-semibold text-gray-900 mb-4">Inpatient Patients List</h3>
         
@@ -69,7 +70,7 @@ const PatientsList = () => {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg w-full focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              style={{ backgroundColor: 'rgba(255, 255, 255, 0.6)' }}
+              style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)' }}
             />
           </div>
           
@@ -87,7 +88,7 @@ const PatientsList = () => {
 
       <div className="overflow-x-auto">
         <table className="w-full">
-          <thead style={{ backgroundColor: 'rgba(249, 250, 251, 0.4)' }}>
+          <thead style={{ backgroundColor: 'rgba(249, 250, 251, 0.6)' }}>
             <tr>
               <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Patient
@@ -115,7 +116,7 @@ const PatientsList = () => {
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-200" style={{ backgroundColor: 'rgba(255, 255, 255, 0.4)' }}>
+          <tbody className="divide-y divide-gray-200" style={{ backgroundColor: 'rgba(255, 255, 255, 0.6)' }}>
             {patients.map((patient) => (
               <tr key={patient.id} className="hover:bg-gray-50">
                 <td className="px-5 py-4 whitespace-nowrap">
