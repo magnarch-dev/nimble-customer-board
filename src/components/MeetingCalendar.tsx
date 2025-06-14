@@ -123,8 +123,8 @@ const MeetingCalendar = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div>
+      <div className="flex gap-6">
+        <div className="flex-shrink-0">
           <Calendar
             mode="single"
             selected={selectedDate}
@@ -149,14 +149,14 @@ const MeetingCalendar = () => {
           </div>
         </div>
 
-        <div className="space-y-4">
+        <div className="flex-1 min-w-0">
           {selectedDate && (
             <div>
               <h4 className="font-semibold text-gray-900 mb-3">
                 Meetings for {format(selectedDate, 'EEEE, MMMM d, yyyy')}
               </h4>
               {selectedDateMeetings.length > 0 ? (
-                <div className="space-y-3">
+                <div className="space-y-3 max-h-96 overflow-y-auto">
                   {selectedDateMeetings.map((meeting) => (
                     <div key={meeting.id} className="p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
                       <div className="flex justify-between items-start mb-2">
