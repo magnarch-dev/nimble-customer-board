@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip, Area, AreaChart } from 'recharts';
 
 const SalesChart = () => {
   const data = [
@@ -15,45 +16,80 @@ const SalesChart = () => {
   ];
 
   return (
-    <div className="p-6 rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)' }}>
-      <div className="flex justify-between items-start mb-6">
+    <div className="p-8 rounded-3xl border-2 border-gray-200 shadow-2xl hover:shadow-3xl transition-all duration-500 relative overflow-hidden" 
+         style={{ 
+           background: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%)',
+           boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1)' 
+         }}>
+      
+      {/* Background decorative elements */}
+      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/5 to-transparent rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-white/3 to-transparent rounded-full blur-2xl"></div>
+      
+      <div className="flex justify-between items-start mb-8 relative z-10">
         <div>
-          <h3 className="text-2xl font-light text-gray-900 mb-1">Revenue</h3>
-          <div className="flex items-center space-x-3">
-            <span className="text-3xl font-extralight text-gray-900">€32,209</span>
-            <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-light bg-green-50 text-green-700 border border-green-200">
-              <span className="text-green-600">↗</span>
-              <span className="ml-1">22% vs last month</span>
+          <div className="flex items-center space-x-3 mb-2">
+            <div className="w-3 h-3 bg-gradient-to-r from-white to-gray-300 rounded-full animate-pulse"></div>
+            <h3 className="text-3xl font-light text-white mb-1 tracking-wide">Revenue Analytics</h3>
+          </div>
+          <div className="flex items-center space-x-4 mb-3">
+            <span className="text-4xl font-extralight text-white bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">€32,209</span>
+            <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-emerald-500/20 to-green-500/20 text-emerald-300 border border-emerald-500/30 backdrop-blur-sm">
+              <div className="w-2 h-2 bg-emerald-400 rounded-full mr-2 animate-pulse"></div>
+              <span className="text-emerald-300">↗</span>
+              <span className="ml-2">+22% vs last month</span>
             </div>
           </div>
+          <p className="text-gray-400 text-sm font-light">Performance trending upward</p>
         </div>
-        <div className="flex items-center space-x-2">
-          <select className="text-sm font-light text-gray-600 border border-gray-200 rounded-lg px-3 py-1.5 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <option>1D</option>
-            <option>1W</option>
-            <option>1M</option>
-            <option>6M</option>
-            <option selected>1Y</option>
-            <option>ALL</option>
+        <div className="flex items-center space-x-3">
+          <select className="text-sm font-medium text-white bg-white/10 border border-white/20 rounded-xl px-4 py-2.5 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/40 transition-all duration-300">
+            <option className="bg-gray-800 text-white">1D</option>
+            <option className="bg-gray-800 text-white">1W</option>
+            <option className="bg-gray-800 text-white">1M</option>
+            <option className="bg-gray-800 text-white">6M</option>
+            <option className="bg-gray-800 text-white" selected>1Y</option>
+            <option className="bg-gray-800 text-white">ALL</option>
           </select>
+          <button className="p-2.5 bg-white/10 border border-white/20 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-all duration-300">
+            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+          </button>
         </div>
       </div>
 
-      <div className="h-48 mb-4">
+      <div className="h-64 mb-6 relative">
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" vertical={false} />
+          <AreaChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
+            <defs>
+              <linearGradient id="colorGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#ffffff" stopOpacity={0.3}/>
+                <stop offset="95%" stopColor="#ffffff" stopOpacity={0.05}/>
+              </linearGradient>
+              <linearGradient id="strokeGradient" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stopColor="#ffffff" stopOpacity={0.8}/>
+                <stop offset="50%" stopColor="#f8fafc" stopOpacity={1}/>
+                <stop offset="100%" stopColor="#ffffff" stopOpacity={0.8}/>
+              </linearGradient>
+            </defs>
+            <CartesianGrid 
+              strokeDasharray="3 3" 
+              stroke="rgba(255, 255, 255, 0.1)" 
+              vertical={false}
+              horizontal={true}
+            />
             <XAxis 
               dataKey="date" 
               axisLine={false} 
               tickLine={false}
-              tick={{ fontSize: 12, fill: '#64748b', fontWeight: 300 }}
+              tick={{ fontSize: 12, fill: 'rgba(255, 255, 255, 0.7)', fontWeight: 300 }}
               dy={10}
             />
             <YAxis 
               axisLine={false} 
               tickLine={false}
-              tick={{ fontSize: 12, fill: '#64748b', fontWeight: 300 }}
+              tick={{ fontSize: 12, fill: 'rgba(255, 255, 255, 0.7)', fontWeight: 300 }}
               domain={[0, 6000]}
               tickFormatter={(value) => `${value/1000}K`}
               dx={-10}
@@ -62,36 +98,57 @@ const SalesChart = () => {
               content={({ active, payload, label }) => {
                 if (active && payload && payload.length) {
                   return (
-                    <div className="bg-white border border-gray-200 rounded-lg shadow-lg px-4 py-3">
-                      <p className="text-sm font-light text-gray-600 mb-1">{label}</p>
-                      <p className="text-lg font-light text-gray-900">€{payload[0].value?.toLocaleString()}</p>
+                    <div className="bg-black/90 border border-white/20 rounded-xl shadow-2xl px-5 py-4 backdrop-blur-md">
+                      <p className="text-sm font-light text-gray-300 mb-2">{label}</p>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-3 h-3 bg-white rounded-full"></div>
+                        <p className="text-xl font-light text-white">€{payload[0].value?.toLocaleString()}</p>
+                      </div>
+                      <div className="mt-2 pt-2 border-t border-white/10">
+                        <p className="text-xs text-gray-400">Revenue Target: €45K</p>
+                      </div>
                     </div>
                   );
                 }
                 return null;
               }}
             />
-            <Line 
-              type="monotone" 
-              dataKey="value" 
-              stroke="#3B82F6" 
+            <Area
+              type="monotone"
+              dataKey="value"
+              stroke="url(#strokeGradient)"
               strokeWidth={3}
+              fill="url(#colorGradient)"
               dot={false}
               activeDot={{ 
-                r: 6, 
-                fill: '#3B82F6', 
-                stroke: '#ffffff', 
-                strokeWidth: 3,
-                filter: 'drop-shadow(0 2px 4px rgba(59, 130, 246, 0.3))'
+                r: 8, 
+                fill: '#ffffff', 
+                stroke: 'rgba(255, 255, 255, 0.3)', 
+                strokeWidth: 6,
+                filter: 'drop-shadow(0 4px 8px rgba(255, 255, 255, 0.3))'
               }}
             />
-          </LineChart>
+          </AreaChart>
         </ResponsiveContainer>
       </div>
       
-      <div className="flex items-center justify-between text-xs font-light text-gray-500 pt-2 border-t border-gray-100">
-        <span>Data updated 5 minutes ago</span>
-        <span>Growth trend: +22%</span>
+      <div className="flex items-center justify-between text-xs font-light text-gray-400 pt-4 border-t border-white/10 relative z-10">
+        <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2">
+            <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+            <span>Live data updated 2 minutes ago</span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+            <span>Growth trend: +22% ↗</span>
+          </div>
+        </div>
+        <div className="flex items-center space-x-1 text-gray-500">
+          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+          </svg>
+          <span>Secured Analytics</span>
+        </div>
       </div>
     </div>
   );
