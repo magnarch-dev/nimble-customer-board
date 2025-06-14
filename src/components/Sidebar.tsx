@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { 
   BarChart3, 
@@ -37,7 +36,7 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
   ];
 
   return (
-    <div className={`h-full transition-all duration-300 ${isCollapsed ? 'w-16' : 'w-64'}`} style={{ backgroundColor: '#e4e4e4' }}>
+    <div className={`h-full transition-all duration-300 backdrop-blur-sm ${isCollapsed ? 'w-16' : 'w-64'}`} style={{ backgroundColor: 'rgba(228, 228, 228, 0.8)' }}>
       <div className="p-4">
         <div className="flex items-center space-x-3">
           <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center">
