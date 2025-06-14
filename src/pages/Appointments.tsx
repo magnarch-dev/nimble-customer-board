@@ -48,16 +48,16 @@ const Appointments = () => {
   ];
 
   return (
-    <div className="min-h-screen flex" style={{ backgroundColor: '#e4e4e4' }}>
+    <div className="min-h-screen flex w-full" style={{ backgroundColor: '#e4e4e4' }}>
       <Sidebar isCollapsed={sidebarCollapsed} />
       
-      <div className="flex-1 overflow-hidden">
+      <div className={`flex-1 flex flex-col overflow-hidden transition-all duration-300 ${sidebarCollapsed ? 'ml-16' : 'ml-64'}`}>
         <Header onToggleSidebar={toggleSidebar} />
         
-        <main className="p-6 overflow-y-auto h-full">
+        <main className="flex-1 p-6 overflow-y-auto">
           <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900">Appointments</h1>
-            <button className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 flex items-center gap-2">
+            <button className="bg-blue-600 text-white px-6 py-3 rounded-lg text-sm font-medium hover:bg-blue-700 flex items-center gap-2 min-w-[180px] justify-center">
               <Plus className="w-4 h-4" />
               Schedule Appointment
             </button>
@@ -102,12 +102,12 @@ const Appointments = () => {
               <div className="bg-white rounded-lg shadow-sm p-6">
                 <div className="flex justify-between items-center mb-4">
                   <h3 className="font-semibold text-gray-900">Today's Appointments</h3>
-                  <div className="flex gap-2">
-                    <button className="flex items-center gap-2 px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">
+                  <div className="flex gap-3">
+                    <button className="flex items-center justify-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 min-w-[100px]">
                       <Search className="w-4 h-4" />
                       Search
                     </button>
-                    <button className="flex items-center gap-2 px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">
+                    <button className="flex items-center justify-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 min-w-[80px]">
                       <Filter className="w-4 h-4" />
                       Filter
                     </button>
@@ -142,9 +142,13 @@ const Appointments = () => {
                             <span>{appointment.type}</span>
                           </div>
                         </div>
-                        <div className="flex gap-2">
-                          <button className="text-blue-600 hover:text-blue-800 text-sm">Edit</button>
-                          <button className="text-red-600 hover:text-red-800 text-sm">Cancel</button>
+                        <div className="flex gap-3">
+                          <button className="text-blue-600 hover:text-blue-800 text-sm px-3 py-1 min-w-[50px] text-center">
+                            Edit
+                          </button>
+                          <button className="text-red-600 hover:text-red-800 text-sm px-3 py-1 min-w-[60px] text-center">
+                            Cancel
+                          </button>
                         </div>
                       </div>
                     </div>
