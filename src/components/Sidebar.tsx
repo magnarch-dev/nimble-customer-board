@@ -63,7 +63,7 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
   };
 
   return (
-    <div className={`h-full transition-all duration-300 ${isCollapsed ? 'w-16' : 'w-64'}`} style={{ backgroundColor: '#e4e4e4' }}>
+    <div className={`h-full transition-all duration-300 ${isCollapsed ? 'w-16' : 'w-64'} relative`} style={{ backgroundColor: '#e4e4e4' }}>
       <div className="p-4">
         <div className="flex items-center space-x-3">
           <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center">
@@ -84,12 +84,12 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
 
       <nav className="mt-8">
         {menuItems.map((item, index) => (
-          <div key={index}>
+          <div key={index} className="relative">
             {item.hasSubmenu ? (
               <div>
                 <button
                   onClick={handleVoiceAgentClick}
-                  className={`w-full flex items-center px-4 py-3 text-sm font-medium transition-colors ${
+                  className={`w-full flex items-center px-4 py-3 text-sm font-medium transition-colors relative ${
                     location.pathname.startsWith('/voice-agent')
                       ? 'bg-blue-50 text-blue-700'
                       : 'text-gray-700 hover:bg-gray-50'
@@ -115,7 +115,7 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
                       <Link
                         key={subIndex}
                         to={subItem.path}
-                        className={`flex items-center px-4 py-2 text-sm transition-colors ${
+                        className={`flex items-center px-4 py-2 text-sm transition-colors relative ${
                           location.pathname === subItem.path
                             ? 'bg-blue-50 text-blue-700'
                             : 'text-gray-600 hover:bg-gray-50'
@@ -131,7 +131,7 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
             ) : (
               <Link
                 to={item.path}
-                className={`flex items-center px-4 py-3 text-sm font-medium transition-colors ${
+                className={`flex items-center px-4 py-3 text-sm font-medium transition-colors relative ${
                   location.pathname === item.path
                     ? 'bg-blue-50 text-blue-700'
                     : 'text-gray-700 hover:bg-gray-50'
@@ -154,12 +154,12 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
         ))}
       </nav>
 
-      <div className="absolute bottom-0 w-full p-4">
+      <div className="absolute bottom-0 left-0 right-0 p-4">
         {bottomItems.map((item, index) => (
           <Link
             key={index}
             to={item.path}
-            className="flex items-center px-2 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg"
+            className="flex items-center px-2 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg transition-colors relative"
           >
             <item.icon className="w-5 h-5" />
             {!isCollapsed && <span className="ml-3">{item.label}</span>}
