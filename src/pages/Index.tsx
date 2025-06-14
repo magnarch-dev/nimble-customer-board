@@ -18,11 +18,11 @@ const Index = () => {
     <div className="min-h-screen flex" style={{ backgroundColor: '#e4e4e4' }}>
       <Sidebar isCollapsed={sidebarCollapsed} />
       
-      <div className={`flex-1 overflow-hidden transition-all duration-300 ${sidebarCollapsed ? 'ml-16' : 'ml-64'}`}>
+      <div className={`flex-1 transition-all duration-300 ${sidebarCollapsed ? 'ml-16' : 'ml-64'}`}>
         <Header onToggleSidebar={toggleSidebar} />
         
-        <main className="p-4 overflow-y-auto h-full">
-          <div className="flex justify-between items-center mb-4">
+        <main className="p-6">
+          <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
             <div className="flex items-center space-x-3">
               <select className="text-sm border border-gray-300 rounded-lg px-3 py-2 bg-white">
@@ -41,12 +41,12 @@ const Index = () => {
           <MetricsCards />
           
           {/* Total Revenue Chart - Full Width */}
-          <div className="mb-4">
+          <div className="mb-6">
             <SalesChart />
           </div>
           
           {/* Meeting Calendar with Total Meetings sidebar */}
-          <div className="mb-4 flex gap-4">
+          <div className="flex gap-6">
             <div className="flex-1">
               <MeetingCalendar />
             </div>
