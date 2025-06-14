@@ -45,11 +45,9 @@ const Header = ({ onToggleSidebar }: HeaderProps) => {
             </div>
           </div>
           
-          <div className="flex items-center space-x-1 text-sm text-gray-600">
-            <ChevronLeft className="w-4 h-4 text-gray-400 hover:text-gray-600 cursor-pointer" />
-            <span className="px-2">Mar 12</span>
-            <ChevronRight className="w-4 h-4 text-gray-400 hover:text-gray-600 cursor-pointer" />
-          </div>
+          <Button variant="outline" size="sm" className="px-4 py-2">
+            Your Plan
+          </Button>
           
           <Button variant="ghost" size="sm" className="p-2">
             <Bell className="w-5 h-5" />
