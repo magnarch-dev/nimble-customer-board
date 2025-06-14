@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { Menu, ChevronLeft, ChevronRight, Bell, Settings } from 'lucide-react';
+import { Menu, ChevronLeft, ChevronRight, Bell, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface HeaderProps {
@@ -34,18 +35,27 @@ const Header = ({ onToggleSidebar }: HeaderProps) => {
         </div>
 
         <div className="flex items-center space-x-4">
-          <div className="flex items-center space-x-2 bg-gray-50 px-3 py-2 rounded-lg">
-            <span className="text-sm text-gray-600">March 12, 2025</span>
+          <div className="flex items-center space-x-3 bg-white px-4 py-2 rounded-lg border border-gray-200">
+            <Search className="w-4 h-4 text-gray-400" />
+            <input 
+              type="text" 
+              placeholder="Search" 
+              className="text-sm bg-transparent border-none outline-none text-gray-600 placeholder-gray-400"
+            />
+            <div className="flex items-center space-x-1 text-xs text-gray-400">
+              <kbd className="px-1 py-0.5 bg-gray-100 rounded">⌘</kbd>
+              <kbd className="px-1 py-0.5 bg-gray-100 rounded">K</kbd>
+            </div>
+          </div>
+          
+          <div className="flex items-center space-x-2 text-sm text-gray-600">
+            <span>March 12, 2025</span>
             <ChevronLeft className="w-4 h-4 text-gray-400" />
             <ChevronRight className="w-4 h-4 text-gray-400" />
           </div>
           
           <Button variant="ghost" size="sm" className="p-2">
             <Bell className="w-5 h-5" />
-          </Button>
-          
-          <Button variant="ghost" size="sm" className="text-sm">
-            Manage Widget
           </Button>
         </div>
       </div>
