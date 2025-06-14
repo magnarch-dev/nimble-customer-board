@@ -33,7 +33,7 @@ const MetricsCards = () => {
   return (
     <div className="grid grid-cols-4 gap-4 mb-6">
       {metrics.map((metric, index) => (
-        <div key={index} className="p-4 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)' }}>
+        <div key={index} className="p-4 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 bg-gray-50">
           <div className="flex justify-between items-center mb-2">
             <h3 className="text-xs font-medium text-gray-500">{metric.title}</h3>
             <div className={`inline-flex items-center px-1.5 py-0.5 rounded-md text-xs font-medium ${
