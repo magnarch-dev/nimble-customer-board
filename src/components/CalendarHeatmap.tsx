@@ -35,7 +35,7 @@ const CalendarHeatmap = () => {
   };
 
   return (
-    <div className="bg-white p-6 rounded-xl border border-gray-200">
+    <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
       <div className="flex justify-between items-center mb-6">
         <div>
           <h3 className="text-lg font-semibold text-gray-900">Total Appointment</h3>
