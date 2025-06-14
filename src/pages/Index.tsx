@@ -16,7 +16,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen flex" style={{ backgroundColor: 'rgba(228, 228, 228, 0.6)' }}>
+    <div className="min-h-screen flex" style={{ backgroundColor: '#e4e4e4' }}>
       <Sidebar isCollapsed={sidebarCollapsed} />
       
       <div className="flex-1 overflow-hidden">
