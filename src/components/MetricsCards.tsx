@@ -53,8 +53,8 @@ const MetricsCards = () => {
           
           <div className="h-0.5 bg-gray-100 rounded-full overflow-hidden">
             <div 
-              className={`h-full transition-all duration-500 ${
-                metric.changeType === 'increase' ? 'bg-green-400' : 'bg-red-400'
+              className={`h-full transition-all duration-500 opacity-68 ${
+                metric.changeType === 'increase' ? 'bg-gray-400' : 'bg-gray-500'
               }`}
               style={{ width: `${Math.abs(parseInt(metric.change))}%` }}
             />
