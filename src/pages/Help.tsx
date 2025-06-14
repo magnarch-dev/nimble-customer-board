@@ -27,13 +27,13 @@ const Help = () => {
   ];
 
   return (
-    <div className="min-h-screen flex" style={{ backgroundColor: '#e4e4e4' }}>
+    <div className="min-h-screen flex w-full" style={{ backgroundColor: '#e4e4e4' }}>
       <Sidebar isCollapsed={sidebarCollapsed} />
       
-      <div className="flex-1 overflow-hidden">
+      <div className={`flex-1 flex flex-col overflow-hidden transition-all duration-300 ${sidebarCollapsed ? 'ml-16' : 'ml-64'}`}>
         <Header onToggleSidebar={toggleSidebar} />
         
-        <main className="p-6 overflow-y-auto h-full">
+        <main className="flex-1 p-6 overflow-y-auto">
           <h1 className="text-2xl font-bold text-gray-900 mb-6">Help Center</h1>
 
           {/* Search */}
@@ -54,7 +54,7 @@ const Help = () => {
               <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
                 <h2 className="text-xl font-semibold text-gray-900 mb-4">Quick Help</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+                  <div className="p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow cursor-pointer">
                     <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-3">
                       <Book className="w-5 h-5 text-blue-600" />
                     </div>
@@ -62,7 +62,7 @@ const Help = () => {
                     <p className="text-sm text-gray-600">Learn the basics of using the platform</p>
                   </div>
                   
-                  <div className="p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+                  <div className="p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow cursor-pointer">
                     <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mb-3">
                       <MessageCircle className="w-5 h-5 text-green-600" />
                     </div>
@@ -96,7 +96,7 @@ const Help = () => {
               <div className="bg-white rounded-lg shadow-sm p-6">
                 <h3 className="font-semibold text-gray-900 mb-4">Contact Support</h3>
                 <div className="space-y-4">
-                  <div className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg">
+                  <div className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">
                     <Mail className="w-5 h-5 text-gray-600" />
                     <div>
                       <p className="text-sm font-medium text-gray-900">Email Support</p>
@@ -104,7 +104,7 @@ const Help = () => {
                     </div>
                   </div>
                   
-                  <div className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg">
+                  <div className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">
                     <MessageCircle className="w-5 h-5 text-gray-600" />
                     <div>
                       <p className="text-sm font-medium text-gray-900">Live Chat</p>
@@ -113,7 +113,8 @@ const Help = () => {
                   </div>
                 </div>
 
-                <button className="w-full mt-4 bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700">
+                <button className="w-full mt-6 bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center justify-center gap-2">
+                  <MessageCircle className="w-4 h-4" />
                   Contact Support
                 </button>
               </div>

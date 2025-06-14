@@ -65,13 +65,13 @@ const Messages = () => {
   ];
 
   return (
-    <div className="min-h-screen flex" style={{ backgroundColor: '#e4e4e4' }}>
+    <div className="min-h-screen flex w-full" style={{ backgroundColor: '#e4e4e4' }}>
       <Sidebar isCollapsed={sidebarCollapsed} />
       
-      <div className="flex-1 overflow-hidden">
+      <div className={`flex-1 flex flex-col overflow-hidden transition-all duration-300 ${sidebarCollapsed ? 'ml-16' : 'ml-64'}`}>
         <Header onToggleSidebar={toggleSidebar} />
         
-        <main className="p-6 overflow-y-auto h-full">
+        <main className="flex-1 p-6 overflow-y-auto">
           <h1 className="text-2xl font-bold text-gray-900 mb-6">Messages</h1>
 
           <div className="bg-white rounded-lg shadow-sm h-96 flex">
@@ -131,7 +131,7 @@ const Messages = () => {
                   </div>
                   <h3 className="font-medium text-gray-900">Dr. Sarah Wilson</h3>
                 </div>
-                <button className="text-gray-400 hover:text-gray-600">
+                <button className="text-gray-400 hover:text-gray-600 p-2 hover:bg-gray-100 rounded-lg transition-colors">
                   <MoreVertical className="w-5 h-5" />
                 </button>
               </div>
@@ -163,18 +163,18 @@ const Messages = () => {
 
               {/* Message Input */}
               <div className="p-4 border-t border-gray-200">
-                <div className="flex items-center space-x-2">
-                  <button className="text-gray-400 hover:text-gray-600">
+                <div className="flex items-center space-x-3">
+                  <button className="text-gray-400 hover:text-gray-600 p-2 hover:bg-gray-100 rounded-lg transition-colors">
                     <Paperclip className="w-5 h-5" />
                   </button>
                   <input
                     type="text"
                     placeholder="Type a message..."
-                    className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     value={newMessage}
                     onChange={(e) => setNewMessage(e.target.value)}
                   />
-                  <button className="bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600">
+                  <button className="bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition-colors min-w-[48px] flex items-center justify-center">
                     <Send className="w-4 h-4" />
                   </button>
                 </div>
