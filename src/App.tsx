@@ -5,7 +5,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
-import PatientRecords from "./pages/PatientRecords";
+import VoiceAgent from "./pages/VoiceAgent";
+import VoiceAgentInbound from "./pages/VoiceAgentInbound";
+import VoiceAgentOutbound from "./pages/VoiceAgentOutbound";
 import Messages from "./pages/Messages";
 import Appointments from "./pages/Appointments";
 import Billing from "./pages/Billing";
@@ -26,7 +28,9 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/patient-records" element={<PatientRecords />} />
+          <Route path="/voice-agent" element={<VoiceAgent />} />
+          <Route path="/voice-agent/inbound" element={<VoiceAgentInbound />} />
+          <Route path="/voice-agent/outbound" element={<VoiceAgentOutbound />} />
           <Route path="/messages" element={<Messages />} />
           <Route path="/appointments" element={<Appointments />} />
           <Route path="/billing" element={<Billing />} />

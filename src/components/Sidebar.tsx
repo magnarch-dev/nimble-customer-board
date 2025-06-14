@@ -12,8 +12,15 @@ import {
   Briefcase, 
   Settings, 
   HelpCircle, 
-  LogOut 
+  LogOut,
+  Phone,
+  PhoneCall,
+  PhoneIncoming,
+  PhoneOutgoing,
+  ChevronDown,
+  ChevronRight
 } from 'lucide-react';
+import { useState } from 'react';
 
 interface SidebarProps {
   isCollapsed: boolean;
@@ -21,10 +28,20 @@ interface SidebarProps {
 
 const Sidebar = ({ isCollapsed }: SidebarProps) => {
   const location = useLocation();
+  const [voiceAgentExpanded, setVoiceAgentExpanded] = useState(false);
 
   const menuItems = [
     { icon: BarChart3, label: 'Overview', path: '/' },
-    { icon: FileText, label: 'Patient Records', path: '/patient-records' },
+    { 
+      icon: Phone, 
+      label: 'Voice Agent', 
+      path: '/voice-agent',
+      hasSubmenu: true,
+      submenu: [
+        { icon: PhoneIncoming, label: 'Inbound Calls', path: '/voice-agent/inbound' },
+        { icon: PhoneOutgoing, label: 'Outbound Calls', path: '/voice-agent/outbound' }
+      ]
+    },
     { icon: MessageSquare, label: 'Messages', path: '/messages', badge: '3' },
     { icon: Calendar, label: 'Appointments', path: '/appointments' },
     { icon: CreditCard, label: 'Billing & Payments', path: '/billing' },
@@ -38,6 +55,12 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
     { icon: HelpCircle, label: 'Help Center', path: '/help' },
     { icon: LogOut, label: 'Logout', path: '/logout' },
   ];
+
+  const handleVoiceAgentClick = () => {
+    if (!isCollapsed) {
+      setVoiceAgentExpanded(!voiceAgentExpanded);
+    }
+  };
 
   return (
     <div className={`h-full transition-all duration-300 ${isCollapsed ? 'w-16' : 'w-64'}`} style={{ backgroundColor: '#e4e4e4' }}>
@@ -61,27 +84,73 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
 
       <nav className="mt-8">
         {menuItems.map((item, index) => (
-          <Link
-            key={index}
-            to={item.path}
-            className={`flex items-center px-4 py-3 text-sm font-medium transition-colors ${
-              location.pathname === item.path
-                ? 'bg-blue-50 text-blue-700'
-                : 'text-gray-700 hover:bg-gray-50'
-            }`}
-          >
-            <item.icon className="w-5 h-5" />
-            {!isCollapsed && (
-              <>
-                <span className="ml-3">{item.label}</span>
-                {item.badge && (
-                  <span className="ml-auto bg-blue-600 text-white text-xs rounded-full px-2 py-1">
-                    {item.badge}
-                  </span>
+          <div key={index}>
+            {item.hasSubmenu ? (
+              <div>
+                <button
+                  onClick={handleVoiceAgentClick}
+                  className={`w-full flex items-center px-4 py-3 text-sm font-medium transition-colors ${
+                    location.pathname.startsWith('/voice-agent')
+                      ? 'bg-blue-50 text-blue-700'
+                      : 'text-gray-700 hover:bg-gray-50'
+                  }`}
+                >
+                  <item.icon className="w-5 h-5" />
+                  {!isCollapsed && (
+                    <>
+                      <span className="ml-3">{item.label}</span>
+                      <span className="ml-auto">
+                        {voiceAgentExpanded ? (
+                          <ChevronDown className="w-4 h-4" />
+                        ) : (
+                          <ChevronRight className="w-4 h-4" />
+                        )}
+                      </span>
+                    </>
+                  )}
+                </button>
+                {!isCollapsed && voiceAgentExpanded && item.submenu && (
+                  <div className="ml-8">
+                    {item.submenu.map((subItem, subIndex) => (
+                      <Link
+                        key={subIndex}
+                        to={subItem.path}
+                        className={`flex items-center px-4 py-2 text-sm transition-colors ${
+                          location.pathname === subItem.path
+                            ? 'bg-blue-50 text-blue-700'
+                            : 'text-gray-600 hover:bg-gray-50'
+                        }`}
+                      >
+                        <subItem.icon className="w-4 h-4" />
+                        <span className="ml-3">{subItem.label}</span>
+                      </Link>
+                    ))}
+                  </div>
                 )}
-              </>
+              </div>
+            ) : (
+              <Link
+                to={item.path}
+                className={`flex items-center px-4 py-3 text-sm font-medium transition-colors ${
+                  location.pathname === item.path
+                    ? 'bg-blue-50 text-blue-700'
+                    : 'text-gray-700 hover:bg-gray-50'
+                }`}
+              >
+                <item.icon className="w-5 h-5" />
+                {!isCollapsed && (
+                  <>
+                    <span className="ml-3">{item.label}</span>
+                    {item.badge && (
+                      <span className="ml-auto bg-blue-600 text-white text-xs rounded-full px-2 py-1">
+                        {item.badge}
+                      </span>
+                    )}
+                  </>
+                )}
+              </Link>
             )}
-          </Link>
+          </div>
         ))}
       </nav>
 
