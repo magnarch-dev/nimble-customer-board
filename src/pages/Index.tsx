@@ -6,7 +6,6 @@ import MetricsCards from '@/components/MetricsCards';
 import SalesChart from '@/components/SalesChart';
 import CalendarHeatmap from '@/components/CalendarHeatmap';
 import PatientBreakdown from '@/components/PatientBreakdown';
-import PatientsList from '@/components/PatientsList';
 
 const Index = () => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -51,8 +50,6 @@ const Index = () => {
             <CalendarHeatmap />
             <PatientBreakdown />
           </div>
-          
-          <PatientsList />
         </main>
       </div>
     </div>
