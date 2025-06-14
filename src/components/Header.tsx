@@ -25,9 +25,7 @@ const Header = ({ onToggleSidebar }: HeaderProps) => {
             <Button variant="ghost" size="sm" className="p-2">
               <ChevronLeft className="w-4 h-4" />
             </Button>
-            <div className="flex items-center space-x-2">
-              <h2 className="text-xl font-semibold text-gray-900">Overview</h2>
-            </div>
+            <h2 className="text-xl font-semibold text-gray-900">Overview</h2>
             <Button variant="ghost" size="sm" className="p-2">
               <ChevronRight className="w-4 h-4" />
             </Button>
@@ -40,18 +38,17 @@ const Header = ({ onToggleSidebar }: HeaderProps) => {
             <input 
               type="text" 
               placeholder="Search" 
-              className="text-sm bg-transparent border-none outline-none text-gray-600 placeholder-gray-400"
+              className="text-sm bg-transparent border-none outline-none text-gray-600 placeholder-gray-400 w-32"
             />
             <div className="flex items-center space-x-1 text-xs text-gray-400">
-              <kbd className="px-1 py-0.5 bg-gray-100 rounded">⌘</kbd>
-              <kbd className="px-1 py-0.5 bg-gray-100 rounded">K</kbd>
+              <kbd className="px-1 py-0.5 bg-gray-100 rounded text-xs">⌘K</kbd>
             </div>
           </div>
           
-          <div className="flex items-center space-x-2 text-sm text-gray-600">
-            <span>March 12, 2025</span>
-            <ChevronLeft className="w-4 h-4 text-gray-400" />
-            <ChevronRight className="w-4 h-4 text-gray-400" />
+          <div className="flex items-center space-x-1 text-sm text-gray-600">
+            <ChevronLeft className="w-4 h-4 text-gray-400 hover:text-gray-600 cursor-pointer" />
+            <span className="px-2">Mar 12</span>
+            <ChevronRight className="w-4 h-4 text-gray-400 hover:text-gray-600 cursor-pointer" />
           </div>
           
           <Button variant="ghost" size="sm" className="p-2">
@@ -59,8 +56,6 @@ const Header = ({ onToggleSidebar }: HeaderProps) => {
           </Button>
         </div>
       </div>
-      
-      <p className="text-sm text-gray-500 mt-2">Get a quick snapshot of key metrics, patient data, and performance trends.</p>
     </header>
   );
 };
