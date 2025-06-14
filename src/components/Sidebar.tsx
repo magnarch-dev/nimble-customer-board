@@ -37,7 +37,7 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
   ];
 
   return (
-    <div className={`bg-white h-full border-r border-gray-200 transition-all duration-300 ${isCollapsed ? 'w-16' : 'w-64'}`}>
+    <div className={`bg-white h-full transition-all duration-300 ${isCollapsed ? 'w-16' : 'w-64'}`}>
       <div className="p-4">
         <div className="flex items-center space-x-3">
           <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
@@ -59,7 +59,7 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
             href="#"
             className={`flex items-center px-4 py-3 text-sm font-medium transition-colors ${
               item.active
-                ? 'bg-blue-50 text-blue-700 border-r-2 border-blue-700'
+                ? 'bg-blue-50 text-blue-700'
                 : 'text-gray-700 hover:bg-gray-50'
             }`}
           >
@@ -78,7 +78,7 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
         ))}
       </nav>
 
-      <div className="absolute bottom-0 w-full p-4 border-t border-gray-200">
+      <div className="absolute bottom-0 w-full p-4">
         {bottomItems.map((item, index) => (
           <a
             key={index}
