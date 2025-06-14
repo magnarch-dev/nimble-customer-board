@@ -5,7 +5,7 @@ import Header from '@/components/Header';
 import MetricsCards from '@/components/MetricsCards';
 import SalesChart from '@/components/SalesChart';
 import CalendarHeatmap from '@/components/CalendarHeatmap';
-import PatientBreakdown from '@/components/PatientBreakdown';
+import MeetingCalendar from '@/components/MeetingCalendar';
 
 const Index = () => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -45,10 +45,14 @@ const Index = () => {
             <SalesChart />
           </div>
           
-          {/* Bottom Section with Calendar and Patient Breakdown */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+          {/* Total Meetings Heatmap - Full Width */}
+          <div className="mb-4">
             <CalendarHeatmap />
-            <PatientBreakdown />
+          </div>
+
+          {/* Meeting Calendar - Full Width */}
+          <div className="mb-4">
+            <MeetingCalendar />
           </div>
         </main>
       </div>
