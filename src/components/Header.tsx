@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Menu, ChevronLeft, ChevronRight, Bell, Search } from 'lucide-react';
+import { Menu, Bell, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface HeaderProps {
@@ -20,16 +20,6 @@ const Header = ({ onToggleSidebar }: HeaderProps) => {
           >
             <Menu className="w-5 h-5" />
           </Button>
-          
-          <div className="flex items-center space-x-2">
-            <Button variant="ghost" size="sm" className="p-2">
-              <ChevronLeft className="w-4 h-4" />
-            </Button>
-            <h2 className="text-xl font-semibold text-gray-900">Overview</h2>
-            <Button variant="ghost" size="sm" className="p-2">
-              <ChevronRight className="w-4 h-4" />
-            </Button>
-          </div>
         </div>
 
         <div className="flex items-center space-x-4">
@@ -45,7 +35,10 @@ const Header = ({ onToggleSidebar }: HeaderProps) => {
             </div>
           </div>
           
-          <Button variant="outline" size="sm" className="px-4 py-2">
+          <Button 
+            size="sm" 
+            className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 font-semibold"
+          >
             Your Plan
           </Button>
           
