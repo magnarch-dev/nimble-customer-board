@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip } from 'recharts';
 
@@ -16,7 +15,7 @@ const SalesChart = () => {
   ];
 
   return (
-    <div className="p-4 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300" style={{ backgroundColor: 'rgba(255, 255, 255, 0.6)' }}>
+    <div className="p-4 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300" style={{ backgroundColor: 'rgba(255, 255, 255, 0.76)' }}>
       <div className="flex justify-between items-center mb-4">
         <h3 className="text-lg font-semibold text-gray-900">Total Revenue</h3>
         <div className="flex items-center space-x-2">

@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const PatientBreakdown = () => {
@@ -11,7 +10,7 @@ const PatientBreakdown = () => {
   const total = patientData.reduce((sum, item) => sum + item.count, 0);
 
   return (
-    <div className="p-5 rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1" style={{ backgroundColor: 'rgba(255, 255, 255, 0.6)' }}>
+    <div className="p-5 rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1" style={{ backgroundColor: 'rgba(255, 255, 255, 0.76)' }}>
       <h3 className="text-lg font-semibold text-gray-900 mb-4">Patient Breakdown</h3>
       
       <div className="space-y-3">
