@@ -5,41 +5,44 @@ import { TrendingUp, TrendingDown } from 'lucide-react';
 const MetricsCards = () => {
   const metrics = [
     {
-      title: 'Total Visitors',
-      value: '10,234',
-      change: '-2.4%',
+      title: 'Product Revenue',
+      value: '€4,250',
+      change: '+18%',
+      changeType: 'increase',
+      subtitle: '+ €1,945 Revenue'
+    },
+    {
+      title: 'Total Deals',
+      value: '1,625',
+      change: '-5%',
       changeType: 'decrease',
-      subtitle: 'Decreased by 480 visitors compared to last week'
+      subtitle: '+ 842 Deals'
     },
     {
-      title: 'Total Patients',
-      value: '5,350',
-      change: '+6.3%',
+      title: 'Created Tickets',
+      value: '3,452',
+      change: '+18%',
       changeType: 'increase',
-      subtitle: 'Increased by 480 patients compared to last week'
+      subtitle: '+ 1,023 Tickets'
     },
     {
-      title: 'Total Doctors',
-      value: '84',
-      change: '+2.6%',
+      title: 'Average Reply',
+      value: '8:02',
+      change: '+8%',
       changeType: 'increase',
-      subtitle: 'Currently 32 staff members are active'
-    },
-    {
-      title: 'Total Appointments',
-      value: '1,245',
-      change: '+2.6%',
-      changeType: 'increase',
-      subtitle: 'Increased by 120 compared to last week'
+      subtitle: '+ 0:40 Faster'
     }
   ];
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
       {metrics.map((metric, index) => (
-        <div key={index} className="bg-white p-4 rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-          <div className="flex justify-between items-center mb-3">
+        <div key={index} className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300">
+          <div className="flex justify-between items-start mb-3">
             <h3 className="text-sm font-medium text-gray-600">{metric.title}</h3>
+          </div>
+          <div className="text-2xl font-bold text-gray-900 mb-2">{metric.value}</div>
+          <div className="flex items-center justify-between">
             <div className={`flex items-center text-sm font-medium ${
               metric.changeType === 'increase' ? 'text-green-600' : 'text-red-600'
             }`}>
@@ -49,9 +52,8 @@ const MetricsCards = () => {
               }
               {metric.change}
             </div>
+            <p className="text-xs text-gray-500">{metric.subtitle}</p>
           </div>
-          <div className="text-2xl font-bold text-gray-900 mb-1">{metric.value}</div>
-          <p className="text-xs text-gray-500 leading-tight">{metric.subtitle}</p>
         </div>
       ))}
     </div>
