@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { 
   BarChart3, 
   Calendar, 
@@ -19,21 +20,23 @@ interface SidebarProps {
 }
 
 const Sidebar = ({ isCollapsed }: SidebarProps) => {
+  const location = useLocation();
+
   const menuItems = [
-    { icon: BarChart3, label: 'Overview', active: true },
-    { icon: FileText, label: 'Patient Records' },
-    { icon: MessageSquare, label: 'Messages', badge: '3' },
-    { icon: Calendar, label: 'Appointments' },
-    { icon: CreditCard, label: 'Billing & Payments' },
-    { icon: Mail, label: 'Email Campaign' },
-    { icon: Briefcase, label: 'Workspace' },
-    { icon: Users, label: 'Reports & Analytics' },
+    { icon: BarChart3, label: 'Overview', path: '/' },
+    { icon: FileText, label: 'Patient Records', path: '/patient-records' },
+    { icon: MessageSquare, label: 'Messages', path: '/messages', badge: '3' },
+    { icon: Calendar, label: 'Appointments', path: '/appointments' },
+    { icon: CreditCard, label: 'Billing & Payments', path: '/billing' },
+    { icon: Mail, label: 'Email Campaign', path: '/email-campaign' },
+    { icon: Briefcase, label: 'Workspace', path: '/workspace' },
+    { icon: Users, label: 'Reports & Analytics', path: '/reports' },
   ];
 
   const bottomItems = [
-    { icon: Settings, label: 'Settings' },
-    { icon: HelpCircle, label: 'Help Center' },
-    { icon: LogOut, label: 'Logout' },
+    { icon: Settings, label: 'Settings', path: '/settings' },
+    { icon: HelpCircle, label: 'Help Center', path: '/help' },
+    { icon: LogOut, label: 'Logout', path: '/logout' },
   ];
 
   return (
@@ -58,11 +61,11 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
 
       <nav className="mt-8">
         {menuItems.map((item, index) => (
-          <a
+          <Link
             key={index}
-            href="#"
+            to={item.path}
             className={`flex items-center px-4 py-3 text-sm font-medium transition-colors ${
-              item.active
+              location.pathname === item.path
                 ? 'bg-blue-50 text-blue-700'
                 : 'text-gray-700 hover:bg-gray-50'
             }`}
@@ -78,20 +81,20 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
                 )}
               </>
             )}
-          </a>
+          </Link>
         ))}
       </nav>
 
       <div className="absolute bottom-0 w-full p-4">
         {bottomItems.map((item, index) => (
-          <a
+          <Link
             key={index}
-            href="#"
+            to={item.path}
             className="flex items-center px-2 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg"
           >
             <item.icon className="w-5 h-5" />
             {!isCollapsed && <span className="ml-3">{item.label}</span>}
-          </a>
+          </Link>
         ))}
       </div>
     </div>
