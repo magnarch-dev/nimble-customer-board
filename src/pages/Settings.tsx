@@ -76,39 +76,41 @@ const Settings = () => {
 
   const renderProfileContent = () => (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <Card>
-          <CardHeader>
-            <CardTitle>Profile Picture</CardTitle>
+          <CardHeader className="pb-4">
+            <CardTitle className="text-lg">Profile Picture</CardTitle>
             <CardDescription>Update your profile photo</CardDescription>
           </CardHeader>
-          <CardContent className="flex items-center gap-4">
-            <Avatar className="w-20 h-20">
-              <AvatarImage src="" />
-              <AvatarFallback className="text-lg">JS</AvatarFallback>
-            </Avatar>
-            <Button variant="outline" className="gap-2">
-              <Camera className="w-4 h-4" />
-              Upload Photo
-            </Button>
+          <CardContent>
+            <div className="flex items-center gap-6">
+              <Avatar className="w-24 h-24">
+                <AvatarImage src="" />
+                <AvatarFallback className="text-xl font-semibold">JS</AvatarFallback>
+              </Avatar>
+              <Button variant="outline" className="gap-2 h-10">
+                <Camera className="w-4 h-4" />
+                Upload Photo
+              </Button>
+            </div>
           </CardContent>
         </Card>
 
         <Card>
-          <CardHeader>
-            <CardTitle>Personal Information</CardTitle>
+          <CardHeader className="pb-4">
+            <CardTitle className="text-lg">Personal Information</CardTitle>
             <CardDescription>Update your personal details</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <CardContent className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FormField
                 control={form.control}
                 name="firstName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>First Name</FormLabel>
+                    <FormLabel className="text-sm font-medium">First Name</FormLabel>
                     <FormControl>
-                      <Input {...field} />
+                      <Input {...field} className="h-10" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -119,9 +121,9 @@ const Settings = () => {
                 name="lastName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Last Name</FormLabel>
+                    <FormLabel className="text-sm font-medium">Last Name</FormLabel>
                     <FormControl>
-                      <Input {...field} />
+                      <Input {...field} className="h-10" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -134,9 +136,9 @@ const Settings = () => {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email Address</FormLabel>
+                  <FormLabel className="text-sm font-medium">Email Address</FormLabel>
                   <FormControl>
-                    <Input type="email" {...field} />
+                    <Input type="email" {...field} className="h-10" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -148,9 +150,9 @@ const Settings = () => {
               name="phone"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Phone Number</FormLabel>
+                  <FormLabel className="text-sm font-medium">Phone Number</FormLabel>
                   <FormControl>
-                    <Input {...field} />
+                    <Input {...field} className="h-10" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -162,9 +164,9 @@ const Settings = () => {
               name="specialization"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Specialization</FormLabel>
+                  <FormLabel className="text-sm font-medium">Specialization</FormLabel>
                   <FormControl>
-                    <Input {...field} />
+                    <Input {...field} className="h-10" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -176,15 +178,15 @@ const Settings = () => {
               name="bio"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Bio</FormLabel>
+                  <FormLabel className="text-sm font-medium">Bio</FormLabel>
                   <FormControl>
                     <textarea
                       {...field}
                       rows={4}
-                      className="w-full px-3 py-2 border border-input rounded-md focus:ring-2 focus:ring-ring focus:border-transparent resize-none"
+                      className="w-full px-3 py-2 border border-input rounded-md focus:ring-2 focus:ring-ring focus:border-transparent resize-none text-sm"
                     />
                   </FormControl>
-                  <FormDescription>
+                  <FormDescription className="text-xs text-muted-foreground">
                     Brief description about yourself (max 500 characters)
                   </FormDescription>
                   <FormMessage />
@@ -326,14 +328,134 @@ const Settings = () => {
       case 'profile':
         return renderProfileContent();
       case 'notifications':
-        return renderNotificationsContent();
+        return (
+          <div className="space-y-6">
+            <Card>
+              <CardHeader className="pb-4">
+                <CardTitle className="text-lg">Email Notifications</CardTitle>
+                <CardDescription>Manage your email notification preferences</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="flex items-center justify-between py-2">
+                  <div className="space-y-1">
+                    <div className="text-sm font-medium">Appointment Reminders</div>
+                    <div className="text-xs text-muted-foreground">Get notified about upcoming appointments</div>
+                  </div>
+                  <Switch defaultChecked />
+                </div>
+                <div className="flex items-center justify-between py-2">
+                  <div className="space-y-1">
+                    <div className="text-sm font-medium">Patient Messages</div>
+                    <div className="text-xs text-muted-foreground">Receive notifications for new patient messages</div>
+                  </div>
+                  <Switch defaultChecked />
+                </div>
+                <div className="flex items-center justify-between py-2">
+                  <div className="space-y-1">
+                    <div className="text-sm font-medium">System Updates</div>
+                    <div className="text-xs text-muted-foreground">Important system announcements and updates</div>
+                  </div>
+                  <Switch />
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader className="pb-4">
+                <CardTitle className="text-lg">Push Notifications</CardTitle>
+                <CardDescription>Configure browser and mobile notifications</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="flex items-center justify-between py-2">
+                  <div className="space-y-1">
+                    <div className="text-sm font-medium">Browser Notifications</div>
+                    <div className="text-xs text-muted-foreground">Show notifications in your browser</div>
+                  </div>
+                  <Switch defaultChecked />
+                </div>
+                <div className="flex items-center justify-between py-2">
+                  <div className="space-y-1">
+                    <div className="text-sm font-medium">Emergency Alerts</div>
+                    <div className="text-xs text-muted-foreground">Critical alerts that require immediate attention</div>
+                  </div>
+                  <Switch defaultChecked />
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        );
       case 'security':
-        return renderSecurityContent();
+        return (
+          <div className="space-y-6">
+            <Card>
+              <CardHeader className="pb-4">
+                <CardTitle className="text-lg">Change Password</CardTitle>
+                <CardDescription>Update your account password</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium mb-2">Current Password</label>
+                  <Input type="password" placeholder="Enter current password" className="h-10" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-2">New Password</label>
+                  <Input type="password" placeholder="Enter new password" className="h-10" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-2">Confirm New Password</label>
+                  <Input type="password" placeholder="Confirm new password" className="h-10" />
+                </div>
+                <Button className="h-10">Update Password</Button>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader className="pb-4">
+                <CardTitle className="text-lg">Two-Factor Authentication</CardTitle>
+                <CardDescription>Add an extra layer of security to your account</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-center justify-between py-2">
+                  <div className="space-y-1">
+                    <div className="text-sm font-medium">2FA Status</div>
+                    <div className="text-xs text-muted-foreground">Currently disabled</div>
+                  </div>
+                  <Button variant="outline" className="gap-2 h-10">
+                    <Key className="w-4 h-4" />
+                    Enable 2FA
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader className="pb-4">
+                <CardTitle className="text-lg">API Keys</CardTitle>
+                <CardDescription>Manage API keys for integrations</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between p-4 border rounded-lg">
+                    <div>
+                      <div className="text-sm font-medium">CRM Integration Key</div>
+                      <div className="text-xs text-muted-foreground">sk-•••••••••••••••••</div>
+                    </div>
+                    <Button variant="outline" size="sm" className="h-8">Regenerate</Button>
+                  </div>
+                  <Button className="gap-2 h-10">
+                    <Key className="w-4 h-4" />
+                    Generate New Key
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        );
       case 'billing':
         return (
           <Card>
-            <CardHeader>
-              <CardTitle>Subscription Plan</CardTitle>
+            <CardHeader className="pb-4">
+              <CardTitle className="text-lg">Subscription Plan</CardTitle>
               <CardDescription>Manage your subscription and billing</CardDescription>
             </CardHeader>
             <CardContent>
@@ -343,43 +465,41 @@ const Settings = () => {
                   <div className="text-muted-foreground">$29/month</div>
                   <div className="text-sm text-muted-foreground mt-1">All features included</div>
                 </div>
-                <Button>Manage Subscription</Button>
+                <Button className="h-10">Manage Subscription</Button>
               </div>
             </CardContent>
           </Card>
         );
       case 'preferences':
         return (
-          <div className="space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Display Preferences</CardTitle>
-                <CardDescription>Customize your interface</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="space-y-0.5">
-                    <div className="text-sm font-medium">Dark Mode</div>
-                    <div className="text-sm text-muted-foreground">Switch to dark theme</div>
-                  </div>
-                  <Switch />
+          <Card>
+            <CardHeader className="pb-4">
+              <CardTitle className="text-lg">Display Preferences</CardTitle>
+              <CardDescription>Customize your interface</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="flex items-center justify-between py-2">
+                <div className="space-y-1">
+                  <div className="text-sm font-medium">Dark Mode</div>
+                  <div className="text-xs text-muted-foreground">Switch to dark theme</div>
                 </div>
-                <div className="flex items-center justify-between">
-                  <div className="space-y-0.5">
-                    <div className="text-sm font-medium">Compact Mode</div>
-                    <div className="text-sm text-muted-foreground">Reduce spacing for more content</div>
-                  </div>
-                  <Switch />
+                <Switch />
+              </div>
+              <div className="flex items-center justify-between py-2">
+                <div className="space-y-1">
+                  <div className="text-sm font-medium">Compact Mode</div>
+                  <div className="text-xs text-muted-foreground">Reduce spacing for more content</div>
                 </div>
-              </CardContent>
-            </Card>
-          </div>
+                <Switch />
+              </div>
+            </CardContent>
+          </Card>
         );
       case 'activity':
         return (
           <Card>
-            <CardHeader>
-              <CardTitle>Recent Activity</CardTitle>
+            <CardHeader className="pb-4">
+              <CardTitle className="text-lg">Recent Activity</CardTitle>
               <CardDescription>Your account activity log</CardDescription>
             </CardHeader>
             <CardContent>
@@ -388,14 +508,14 @@ const Settings = () => {
                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                   <div>
                     <div className="text-sm font-medium">Profile updated</div>
-                    <div className="text-sm text-muted-foreground">2 hours ago</div>
+                    <div className="text-xs text-muted-foreground">2 hours ago</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 p-3 border rounded-lg">
                   <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                   <div>
                     <div className="text-sm font-medium">Login from new device</div>
-                    <div className="text-sm text-muted-foreground">1 day ago</div>
+                    <div className="text-xs text-muted-foreground">1 day ago</div>
                   </div>
                 </div>
               </div>
@@ -413,37 +533,39 @@ const Settings = () => {
   };
 
   return (
-    <div className="min-h-screen flex" style={{ backgroundColor: '#e4e4e4' }}>
+    <div className="min-h-screen flex w-full" style={{ backgroundColor: '#e4e4e4' }}>
       <Sidebar isCollapsed={sidebarCollapsed} />
       
       <div className="flex-1 overflow-hidden">
         <Header onToggleSidebar={toggleSidebar} />
         
-        <main className="p-6 overflow-y-auto h-full">
-          <div className="max-w-6xl mx-auto">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Settings</h1>
-            <p className="text-muted-foreground mb-8">Manage your account preferences and configurations</p>
+        <main className="p-8 overflow-y-auto h-full">
+          <div className="max-w-7xl mx-auto">
+            <div className="mb-8">
+              <h1 className="text-3xl font-bold text-gray-900 mb-2">Settings</h1>
+              <p className="text-muted-foreground">Manage your account preferences and configurations</p>
+            </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
               {/* Settings Navigation */}
               <div className="lg:col-span-1">
-                <Card>
-                  <CardContent className="p-4">
-                    <nav className="space-y-1">
+                <Card className="sticky top-4">
+                  <CardContent className="p-6">
+                    <nav className="space-y-2">
                       {settingsNavItems.map((item) => (
                         <button
                           key={item.id}
                           onClick={() => setActiveSection(item.id)}
-                          className={`w-full flex items-start gap-3 px-3 py-3 text-left rounded-lg transition-colors hover:bg-accent ${
+                          className={`w-full flex items-start gap-3 px-4 py-3 text-left rounded-lg transition-all duration-200 hover:bg-accent ${
                             activeSection === item.id
-                              ? 'bg-primary text-primary-foreground'
-                              : 'text-foreground'
+                              ? 'bg-primary text-primary-foreground shadow-sm'
+                              : 'text-foreground hover:text-accent-foreground'
                           }`}
                         >
-                          <item.icon className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                          <div className="min-w-0">
+                          <item.icon className="w-5 h-5 mt-0.5 flex-shrink-0" />
+                          <div className="min-w-0 flex-1">
                             <div className="text-sm font-medium truncate">{item.label}</div>
-                            <div className={`text-xs truncate ${
+                            <div className={`text-xs truncate mt-1 ${
                               activeSection === item.id ? 'text-primary-foreground/80' : 'text-muted-foreground'
                             }`}>
                               {item.description}
@@ -458,9 +580,9 @@ const Settings = () => {
 
               {/* Settings Content */}
               <div className="lg:col-span-3">
-                <div className="space-y-6">
-                  <div>
-                    <h2 className="text-2xl font-semibold text-gray-900 mb-1">{getSectionTitle()}</h2>
+                <div className="space-y-8">
+                  <div className="pb-4 border-b">
+                    <h2 className="text-2xl font-semibold text-gray-900 mb-2">{getSectionTitle()}</h2>
                     <p className="text-muted-foreground">
                       {settingsNavItems.find(item => item.id === activeSection)?.description}
                     </p>
@@ -469,11 +591,11 @@ const Settings = () => {
                   {renderContent()}
 
                   {activeSection === 'profile' && (
-                    <div className="flex justify-end pt-4">
+                    <div className="flex justify-end pt-6 border-t">
                       <Button 
                         onClick={form.handleSubmit(onSubmit)}
                         disabled={isLoading}
-                        className="gap-2"
+                        className="gap-2 h-10 px-6"
                       >
                         <Save className="w-4 h-4" />
                         {isLoading ? 'Saving...' : 'Save Changes'}
