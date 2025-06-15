@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -536,36 +535,36 @@ const Settings = () => {
     <div className="min-h-screen flex w-full" style={{ backgroundColor: '#e4e4e4' }}>
       <Sidebar isCollapsed={sidebarCollapsed} />
       
-      <div className="flex-1 overflow-hidden">
+      <div className="flex-1 flex flex-col min-w-0">
         <Header onToggleSidebar={toggleSidebar} />
         
-        <main className="p-8 overflow-y-auto h-full">
-          <div className="max-w-7xl mx-auto">
+        <main className="flex-1 p-6 lg:p-8 overflow-y-auto">
+          <div className="max-w-7xl mx-auto w-full">
             <div className="mb-8">
               <h1 className="text-3xl font-bold text-gray-900 mb-2">Settings</h1>
               <p className="text-muted-foreground">Manage your account preferences and configurations</p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 xl:grid-cols-5 gap-6 lg:gap-8">
               {/* Settings Navigation */}
-              <div className="lg:col-span-1">
-                <Card className="sticky top-4">
-                  <CardContent className="p-6">
-                    <nav className="space-y-2">
+              <div className="xl:col-span-1">
+                <Card className="sticky top-6">
+                  <CardContent className="p-4">
+                    <nav className="space-y-1">
                       {settingsNavItems.map((item) => (
                         <button
                           key={item.id}
                           onClick={() => setActiveSection(item.id)}
-                          className={`w-full flex items-start gap-3 px-4 py-3 text-left rounded-lg transition-all duration-200 hover:bg-accent ${
+                          className={`w-full flex items-start gap-3 px-3 py-3 text-left rounded-lg transition-all duration-200 hover:bg-accent ${
                             activeSection === item.id
                               ? 'bg-primary text-primary-foreground shadow-sm'
                               : 'text-foreground hover:text-accent-foreground'
                           }`}
                         >
-                          <item.icon className="w-5 h-5 mt-0.5 flex-shrink-0" />
+                          <item.icon className="w-4 h-4 mt-0.5 flex-shrink-0" />
                           <div className="min-w-0 flex-1">
                             <div className="text-sm font-medium truncate">{item.label}</div>
-                            <div className={`text-xs truncate mt-1 ${
+                            <div className={`text-xs truncate mt-0.5 ${
                               activeSection === item.id ? 'text-primary-foreground/80' : 'text-muted-foreground'
                             }`}>
                               {item.description}
@@ -579,8 +578,8 @@ const Settings = () => {
               </div>
 
               {/* Settings Content */}
-              <div className="lg:col-span-3">
-                <div className="space-y-8">
+              <div className="xl:col-span-4 min-w-0">
+                <div className="space-y-6">
                   <div className="pb-4 border-b">
                     <h2 className="text-2xl font-semibold text-gray-900 mb-2">{getSectionTitle()}</h2>
                     <p className="text-muted-foreground">
@@ -588,7 +587,9 @@ const Settings = () => {
                     </p>
                   </div>
                   
-                  {renderContent()}
+                  <div className="w-full">
+                    {renderContent()}
+                  </div>
 
                   {activeSection === 'profile' && (
                     <div className="flex justify-end pt-6 border-t">
