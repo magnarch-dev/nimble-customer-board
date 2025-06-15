@@ -25,24 +25,24 @@ const VoiceAgentInbound = () => {
   ];
 
   return (
-    <div className="min-h-screen flex" style={{ backgroundColor: '#e4e4e4' }}>
+    <div className="min-h-screen flex w-full" style={{ backgroundColor: '#e4e4e4' }}>
       <Sidebar isCollapsed={sidebarCollapsed} />
       
-      <div className="flex-1 overflow-hidden">
+      <div className={`flex-1 flex flex-col overflow-hidden transition-all duration-300 ${sidebarCollapsed ? 'ml-16' : 'ml-64'}`}>
         <Header onToggleSidebar={toggleSidebar} />
         
-        <main className="p-6 overflow-y-auto h-full">
+        <main className="flex-1 p-6 overflow-y-auto">
           <div className="flex justify-between items-center mb-6">
             <div>
               <h1 className="text-2xl font-bold text-gray-900">Inbound Call Management</h1>
               <p className="text-gray-600">Monitor and manage incoming customer calls</p>
             </div>
             <div className="flex gap-3">
-              <button className="bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-700 flex items-center gap-2">
+              <button className="bg-green-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-green-700 transition-colors flex items-center gap-2 min-w-[120px] justify-center">
                 <Play className="w-4 h-4" />
                 Start Queue
               </button>
-              <button className="bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-red-700 flex items-center gap-2">
+              <button className="bg-red-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-red-700 transition-colors flex items-center gap-2 min-w-[120px] justify-center">
                 <Pause className="w-4 h-4" />
                 Pause Queue
               </button>
@@ -106,10 +106,10 @@ const VoiceAgentInbound = () => {
                       </td>
                       <td className="py-4 px-4">
                         <div className="flex items-center gap-2">
-                          <button className="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                          <button className="bg-blue-600 text-white px-3 py-1 rounded text-xs font-medium hover:bg-blue-700 transition-colors min-w-[70px] text-center">
                             Monitor
                           </button>
-                          <button className="text-orange-600 hover:text-orange-800 text-sm font-medium">
+                          <button className="bg-orange-600 text-white px-3 py-1 rounded text-xs font-medium hover:bg-orange-700 transition-colors min-w-[70px] text-center">
                             Transfer
                           </button>
                         </div>

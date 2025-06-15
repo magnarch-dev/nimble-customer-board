@@ -39,16 +39,16 @@ const Billing = () => {
   ];
 
   return (
-    <div className="min-h-screen flex" style={{ backgroundColor: '#e4e4e4' }}>
+    <div className="min-h-screen flex w-full" style={{ backgroundColor: '#e4e4e4' }}>
       <Sidebar isCollapsed={sidebarCollapsed} />
       
-      <div className="flex-1 overflow-hidden">
+      <div className={`flex-1 flex flex-col overflow-hidden transition-all duration-300 ${sidebarCollapsed ? 'ml-16' : 'ml-64'}`}>
         <Header onToggleSidebar={toggleSidebar} />
         
-        <main className="p-6 overflow-y-auto h-full">
+        <main className="flex-1 p-6 overflow-y-auto">
           <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900">Billing & Payments</h1>
-            <button className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 flex items-center gap-2">
+            <button className="bg-blue-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors flex items-center gap-2 min-w-[140px] justify-center">
               <Plus className="w-4 h-4" />
               Create Invoice
             </button>
@@ -110,11 +110,11 @@ const Billing = () => {
             <div className="flex justify-between items-center mb-4">
               <h3 className="font-semibold text-gray-900">Recent Invoices</h3>
               <div className="flex gap-2">
-                <button className="flex items-center gap-2 px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">
+                <button className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors min-w-[80px] justify-center">
                   <Search className="w-4 h-4" />
                   Search
                 </button>
-                <button className="flex items-center gap-2 px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">
+                <button className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors min-w-[80px] justify-center">
                   <Filter className="w-4 h-4" />
                   Filter
                 </button>
@@ -155,10 +155,13 @@ const Billing = () => {
                       </td>
                       <td className="py-4 px-4">
                         <div className="flex items-center gap-2">
-                          <button className="text-blue-600 hover:text-blue-800">
-                            <Download className="w-4 h-4" />
+                          <button className="bg-blue-600 text-white px-3 py-1 rounded text-xs font-medium hover:bg-blue-700 transition-colors min-w-[60px] text-center">
+                            <Download className="w-3 h-3 inline mr-1" />
+                            PDF
                           </button>
-                          <button className="text-gray-600 hover:text-gray-800">Edit</button>
+                          <button className="bg-gray-600 text-white px-3 py-1 rounded text-xs font-medium hover:bg-gray-700 transition-colors min-w-[50px] text-center">
+                            Edit
+                          </button>
                         </div>
                       </td>
                     </tr>

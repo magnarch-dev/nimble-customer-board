@@ -46,21 +46,21 @@ const Workspace = () => {
   ];
 
   return (
-    <div className="min-h-screen flex" style={{ backgroundColor: '#e4e4e4' }}>
+    <div className="min-h-screen flex w-full" style={{ backgroundColor: '#e4e4e4' }}>
       <Sidebar isCollapsed={sidebarCollapsed} />
       
-      <div className="flex-1 overflow-hidden">
+      <div className={`flex-1 flex flex-col overflow-hidden transition-all duration-300 ${sidebarCollapsed ? 'ml-16' : 'ml-64'}`}>
         <Header onToggleSidebar={toggleSidebar} />
         
-        <main className="p-6 overflow-y-auto h-full">
+        <main className="flex-1 p-6 overflow-y-auto">
           <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900">Workspace</h1>
             <div className="flex gap-2">
-              <button className="bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-50 flex items-center gap-2">
+              <button className="bg-white border border-gray-300 text-gray-700 px-6 py-2 rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors flex items-center gap-2 min-w-[100px] justify-center">
                 <Upload className="w-4 h-4" />
                 Upload
               </button>
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 flex items-center gap-2">
+              <button className="bg-blue-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors flex items-center gap-2 min-w-[130px] justify-center">
                 <Plus className="w-4 h-4" />
                 New Project
               </button>
@@ -73,7 +73,9 @@ const Workspace = () => {
               <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
                 <div className="flex justify-between items-center mb-4">
                   <h3 className="font-semibold text-gray-900">Projects</h3>
-                  <button className="text-blue-600 hover:text-blue-800 text-sm">View All</button>
+                  <button className="text-blue-600 hover:text-blue-800 text-sm font-medium px-3 py-1 rounded hover:bg-blue-50 transition-colors min-w-[70px] text-center">
+                    View All
+                  </button>
                 </div>
 
                 <div className="space-y-4">
@@ -94,6 +96,9 @@ const Workspace = () => {
                             </div>
                           </div>
                         </div>
+                        <button className="bg-blue-600 text-white px-3 py-1 rounded text-xs font-medium hover:bg-blue-700 transition-colors min-w-[60px] text-center">
+                          Open
+                        </button>
                       </div>
                     </div>
                   ))}
@@ -115,9 +120,14 @@ const Workspace = () => {
                           <p className="text-sm text-gray-500">{file.size} • {file.modified}</p>
                         </div>
                       </div>
-                      <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
-                        {file.type}
-                      </span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                          {file.type}
+                        </span>
+                        <button className="bg-blue-600 text-white px-3 py-1 rounded text-xs font-medium hover:bg-blue-700 transition-colors min-w-[50px] text-center">
+                          Open
+                        </button>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -130,17 +140,26 @@ const Workspace = () => {
               <div className="bg-white rounded-lg shadow-sm p-6">
                 <h3 className="font-semibold text-gray-900 mb-4">Quick Actions</h3>
                 <div className="space-y-2">
-                  <button className="w-full text-left p-3 hover:bg-gray-50 rounded-lg flex items-center gap-3">
-                    <Plus className="w-4 h-4 text-gray-600" />
-                    Create New Document
+                  <button className="w-full text-left p-3 hover:bg-gray-50 rounded-lg flex items-center justify-between gap-3 transition-colors">
+                    <div className="flex items-center gap-3">
+                      <Plus className="w-4 h-4 text-gray-600" />
+                      <span>Create New Document</span>
+                    </div>
+                    <span className="text-gray-400">→</span>
                   </button>
-                  <button className="w-full text-left p-3 hover:bg-gray-50 rounded-lg flex items-center gap-3">
-                    <Upload className="w-4 h-4 text-gray-600" />
-                    Upload File
+                  <button className="w-full text-left p-3 hover:bg-gray-50 rounded-lg flex items-center justify-between gap-3 transition-colors">
+                    <div className="flex items-center gap-3">
+                      <Upload className="w-4 h-4 text-gray-600" />
+                      <span>Upload File</span>
+                    </div>
+                    <span className="text-gray-400">→</span>
                   </button>
-                  <button className="w-full text-left p-3 hover:bg-gray-50 rounded-lg flex items-center gap-3">
-                    <Folder className="w-4 h-4 text-gray-600" />
-                    New Folder
+                  <button className="w-full text-left p-3 hover:bg-gray-50 rounded-lg flex items-center justify-between gap-3 transition-colors">
+                    <div className="flex items-center gap-3">
+                      <Folder className="w-4 h-4 text-gray-600" />
+                      <span>New Folder</span>
+                    </div>
+                    <span className="text-gray-400">→</span>
                   </button>
                 </div>
               </div>
@@ -156,6 +175,9 @@ const Workspace = () => {
                   <div className="w-full bg-gray-200 rounded-full h-2">
                     <div className="bg-blue-600 h-2 rounded-full" style={{ width: '24%' }}></div>
                   </div>
+                  <button className="w-full mt-4 bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors">
+                    Upgrade Storage
+                  </button>
                 </div>
               </div>
             </div>

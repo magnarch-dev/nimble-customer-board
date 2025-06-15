@@ -52,24 +52,24 @@ const VoiceAgentOutbound = () => {
   ];
 
   return (
-    <div className="min-h-screen flex" style={{ backgroundColor: '#e4e4e4' }}>
+    <div className="min-h-screen flex w-full" style={{ backgroundColor: '#e4e4e4' }}>
       <Sidebar isCollapsed={sidebarCollapsed} />
       
-      <div className="flex-1 overflow-hidden">
+      <div className={`flex-1 flex flex-col overflow-hidden transition-all duration-300 ${sidebarCollapsed ? 'ml-16' : 'ml-64'}`}>
         <Header onToggleSidebar={toggleSidebar} />
         
-        <main className="p-6 overflow-y-auto h-full">
+        <main className="flex-1 p-6 overflow-y-auto">
           <div className="flex justify-between items-center mb-6">
             <div>
               <h1 className="text-2xl font-bold text-gray-900">Outbound Call Management</h1>
               <p className="text-gray-600">Manage campaigns and outbound call operations</p>
             </div>
             <div className="flex gap-3">
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 flex items-center gap-2">
+              <button className="bg-blue-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors flex items-center gap-2 min-w-[140px] justify-center">
                 <Plus className="w-4 h-4" />
                 New Campaign
               </button>
-              <button className="bg-gray-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-700 flex items-center gap-2">
+              <button className="bg-gray-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-gray-700 transition-colors flex items-center gap-2 min-w-[100px] justify-center">
                 <Settings className="w-4 h-4" />
                 Settings
               </button>
@@ -147,17 +147,17 @@ const VoiceAgentOutbound = () => {
                       <td className="py-4 px-4">
                         <div className="flex items-center gap-2">
                           {campaign.status === 'Active' ? (
-                            <button className="text-blue-600 hover:text-blue-800 text-sm font-medium flex items-center gap-1">
+                            <button className="bg-blue-600 text-white px-3 py-1 rounded text-xs font-medium hover:bg-blue-700 transition-colors flex items-center gap-1 min-w-[70px] justify-center">
                               <Play className="w-3 h-3" />
                               Resume
                             </button>
                           ) : (
-                            <button className="text-green-600 hover:text-green-800 text-sm font-medium flex items-center gap-1">
+                            <button className="bg-green-600 text-white px-3 py-1 rounded text-xs font-medium hover:bg-green-700 transition-colors flex items-center gap-1 min-w-[70px] justify-center">
                               <Play className="w-3 h-3" />
                               Start
                             </button>
                           )}
-                          <button className="text-gray-600 hover:text-gray-800 text-sm font-medium">
+                          <button className="bg-gray-600 text-white px-3 py-1 rounded text-xs font-medium hover:bg-gray-700 transition-colors min-w-[50px] text-center">
                             Edit
                           </button>
                         </div>
