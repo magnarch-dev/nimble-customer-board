@@ -11,7 +11,7 @@ const Header = ({ onToggleSidebar }: HeaderProps) => {
   return (
     <header className="border-b border-gray-200 px-6 py-4" style={{ backgroundColor: '#e4e4e4' }}>
       <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-2">
           <Button 
             variant="ghost" 
             size="sm" 
@@ -22,7 +22,7 @@ const Header = ({ onToggleSidebar }: HeaderProps) => {
           </Button>
         </div>
 
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-2">
           <div className="flex items-center space-x-3 bg-white px-4 py-2 rounded-lg border border-gray-200">
             <Search className="w-4 h-4 text-gray-400" />
             <input 
